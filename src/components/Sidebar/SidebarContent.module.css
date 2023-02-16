@@ -28,12 +28,18 @@ ul li span {
   margin: 0 1rem;
 }
 
-.sidebar__content p {
-  padding: 0 0 0 1rem;
-}
-
 ul li,
 .list-icon,
 .close-icon {
   cursor: pointer;
+}
+
+.search {
+  color: var(--sidebar-text-color);
+  width: 80%;
+  outline: none;
+  background: transparent;
+  border-left: none;
+  border-right: none;
+  border-top: none;
 }

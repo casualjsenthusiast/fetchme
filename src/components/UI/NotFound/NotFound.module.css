@@ -1,0 +1,6 @@
+.not-found {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: var(--sidebar-text-color);
+}

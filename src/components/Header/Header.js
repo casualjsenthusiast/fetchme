@@ -6,7 +6,7 @@ const Header = () => {
       <span>FetchMe</span>
       <span className="fa fa-link"></span>
       <a
-        href="https://github.com/casualjsenthusiast"
+        href="https://github.com/casualjsenthusiast/fetchme"
         target="_blank"
         aria-label="Github repo link"
         rel="noreferrer noopener"

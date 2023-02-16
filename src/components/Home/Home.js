@@ -1,21 +1,16 @@
 import classes from "./Home.module.css";
 import Sidebar from "../Sidebar/Sidebar";
+import RepoList from "../RepoList/RepoList";
 import { useSelector } from "react-redux";
 
-const Home = (props) => {
+const Home = () => {
   const isSidebarClosed = useSelector((state) => state.sidebar.isSidebarClosed);
   return (
-    <div className={classes.home}>
+    <main className={classes.home}>
       <Sidebar />
-      <div
-        className={`${classes["list-items"]} ${
-          isSidebarClosed ? classes.unblur : ""
-        }`}
-      >
-        list items
-      </div>
+      <RepoList />
       <div className={classes.readme}>readme</div>
-    </div>
+    </main>
   );
 };
 

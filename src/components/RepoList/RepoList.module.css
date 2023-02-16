@@ -1,0 +1,21 @@
+.list-items {
+  flex: 1 1 300px;
+  min-width: 300px;
+}
+
+.unblur {
+  filter: unset !important;
+}
+
+@media (max-width: 769px) {
+  .list-items {
+    flex: 1 1;
+    filter: blur(2px);
+  }
+}
+
+@media (max-width: 601px) {
+  .list-items {
+    min-width: unset;
+  }
+}

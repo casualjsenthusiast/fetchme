@@ -1,6 +1,6 @@
 import classes from "./SidebarContent.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { sidebarActions } from "../../store/index";
+import { sidebarActions, selectedTermActions } from "../../store/index";
 
 const SidebarContent = (props) => {
   const dispatch = useDispatch();
@@ -8,6 +8,11 @@ const SidebarContent = (props) => {
 
   const toggleSidebar = () => {
     dispatch(sidebarActions.toggle());
+  };
+
+  const actionIconClicked = (event) => {
+    const searchTerm = event.target.id;
+    dispatch(selectedTermActions.setSelectedTerm(searchTerm));
   };
 
   return (
@@ -24,19 +29,31 @@ const SidebarContent = (props) => {
           </div>
           <ul>
             <li>
-              <span className="fa fa-file-code-o"></span>Cheatsheet
+              <span
+                onClick={actionIconClicked}
+                id="cheatsheet"
+                className="fa fa-file-code-o"
+              ></span>
+              Cheatsheet
             </li>
             <li>
-              <span className="fa fa-gears"></span>Interview Questions
+              <span
+                onClick={actionIconClicked}
+                id="interview"
+                className="fa fa-gears"
+              ></span>
+              Interview Questions
+            </li>
+            <li>
+              <span className="fa fa-search"></span>
+              <input
+                name="search"
+                className={classes.search}
+                type="text"
+                aria-label="search text"
+              />
             </li>
           </ul>
-          <div className={classes.sidebar__content}>
-            <p>
-              FetchMe is an online tool to fetch Readme files of your favourite
-              GitHub repos.
-            </p>
-            <hr />
-          </div>
         </>
       )}
 
@@ -54,6 +71,9 @@ const SidebarContent = (props) => {
             </li>
             <li>
               <span className="fa fa-gears"></span>
+            </li>
+            <li>
+              <span className="fa fa-search"></span>
             </li>
           </ul>
         </>
