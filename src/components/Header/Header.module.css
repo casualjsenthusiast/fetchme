@@ -1,0 +1,18 @@
+.header {
+  display: flex;
+  align-items: center;
+  background-color: var(--header-background);
+  color: var(--white-color);
+  padding: 1rem;
+  gap: 0.5rem;
+}
+
+.header a {
+  margin-left: auto;
+  text-decoration: none;
+  color: var(--white-color);
+}
+
+.header a:hover {
+  color: var(--link-hover);
+}

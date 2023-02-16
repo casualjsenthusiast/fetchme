@@ -1,0 +1,39 @@
+.sidebar__menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.close-icon {
+  margin-left: auto;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 1rem 0 0;
+  background: var(--sidebar-border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+ul li {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(240, 241, 242, 0.06);
+}
+
+ul li span {
+  margin: 0 1rem;
+}
+
+.sidebar__content p {
+  padding: 0 0 0 1rem;
+}
+
+ul li,
+.list-icon,
+.close-icon {
+  cursor: pointer;
+}

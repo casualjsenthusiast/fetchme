@@ -1,0 +1,24 @@
+.sidebar {
+  flex: 1 1 300px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  transition: flex 0.2s ease-out;
+  background: var(--sidebar-background);
+  color: var(--sidebar-text-color);
+  border-right: 1px solid var(--sidebar-border-color);
+  box-shadow: 1px 2px 8px rgb(0 0 0 / 45%);
+  z-index: 100;
+  padding: 0;
+}
+
+.closed {
+  flex: 0 50px !important;
+  min-width: unset;
+}
+
+@media (max-width: 769px) {
+  .sidebar {
+    flex: 2 1;
+  }
+}
