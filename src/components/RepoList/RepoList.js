@@ -1,11 +1,13 @@
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import classes from "./RepoList.module.css";
 import NotFound from "../UI/NotFound/NotFound";
-import { useEffect } from "react";
+import List from "./List";
 
 const RepoList = (props) => {
-  const isSidebarClosed = useSelector((state) => state.sidebar.isSidebarClosed);
-  const searchTerm = useSelector((state) => state.selectedTerm.selectedTerm);
+  let [repos, setRepos] = useState([]);
+  let isSidebarClosed = useSelector((state) => state.sidebar.isSidebarClosed);
+  let searchTerm = useSelector((state) => state.selectedTerm.selectedTerm);
 
   useEffect(() => {
     async function fetchData() {
@@ -14,11 +16,11 @@ const RepoList = (props) => {
           `https://api.github.com/search/repositories?q=${searchTerm}+in:name&sort=stars&order=desc`
         ).then((d) => d.json());
 
-        console.log(
+        setRepos(
           data.items.map((d) => {
             return {
+              id: d.id,
               name: d.name,
-              description: d.description,
               topics: d.topics,
               url: d["html_url"],
               forks: d.forks,
@@ -38,7 +40,13 @@ const RepoList = (props) => {
       }`}
     >
       {searchTerm === "" && <NotFound data="No data found" />}
-      {searchTerm !== "" && <p>{searchTerm}</p>}
+      {searchTerm !== "" && (
+        <div>
+          {repos.map((repo) => (
+            <List key={repo.id} repo={repo} />
+          ))}
+        </div>
+      )}
     </section>
   );
 };

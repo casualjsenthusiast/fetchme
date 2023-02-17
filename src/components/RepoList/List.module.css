@@ -1,0 +1,35 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  color: var(--sidebar-text-color);
+}
+
+.list__ul {
+  flex-direction: row;
+  background: unset;
+  justify-content: space-evenly;
+  gap: 0;
+}
+
+.list__ul > li {
+  cursor: default;
+}
+
+.list__ul > :first-child {
+  width: 50%;
+  cursor: pointer;
+}
+
+.list__ul > :first-child a {
+  color: var(--sidebar-text-color);
+  text-decoration: none;
+}
+
+.list__ul > :first-child a:hover {
+  color: var(--link-hover);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+}

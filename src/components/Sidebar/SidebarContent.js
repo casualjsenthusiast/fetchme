@@ -1,8 +1,10 @@
 import classes from "./SidebarContent.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { sidebarActions, selectedTermActions } from "../../store/index";
+import { useRef } from "react";
 
 const SidebarContent = (props) => {
+  const inputRef = useRef();
   const dispatch = useDispatch();
   const isSidebarClosed = useSelector((state) => state.sidebar.isSidebarClosed);
 
@@ -13,6 +15,13 @@ const SidebarContent = (props) => {
   const actionIconClicked = (event) => {
     const searchTerm = event.target.id;
     dispatch(selectedTermActions.setSelectedTerm(searchTerm));
+  };
+
+  const onSearch = (_) => {
+    const searchTerm = inputRef.current.value.trim();
+    if (searchTerm !== "") {
+      dispatch(selectedTermActions.setSelectedTerm(searchTerm));
+    }
   };
 
   return (
@@ -45,8 +54,9 @@ const SidebarContent = (props) => {
               Interview Questions
             </li>
             <li>
-              <span className="fa fa-search"></span>
+              <span onClick={onSearch} className="fa fa-search"></span>
               <input
+                ref={inputRef}
                 name="search"
                 className={classes.search}
                 type="text"
