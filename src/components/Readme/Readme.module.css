@@ -2,6 +2,15 @@
   flex: 1 1 300px;
   min-width: 300px;
   background: var(--white-color);
+  overflow: overlay;
+  padding: 0 2rem;
+}
+
+code {
+  display: inline-block;
+  width: 100%;
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 
 @media (max-width: 601px) {

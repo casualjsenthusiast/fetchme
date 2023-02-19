@@ -9,6 +9,8 @@
   background: unset;
   justify-content: space-evenly;
   gap: 0;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .list__ul > li {
