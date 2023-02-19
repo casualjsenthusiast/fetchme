@@ -29,6 +29,10 @@
   color: var(--link-hover);
 }
 
+.list__ul > :last-child {
+  cursor: pointer;
+}
+
 .tags {
   display: flex;
   flex-wrap: wrap;

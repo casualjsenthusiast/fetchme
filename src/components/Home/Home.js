@@ -1,15 +1,19 @@
+import { useState } from "react";
 import classes from "./Home.module.css";
 import Sidebar from "../Sidebar/Sidebar";
 import RepoList from "../RepoList/RepoList";
-import { useSelector } from "react-redux";
+import Readme from "../Readme/Readme";
 
 const Home = () => {
-  const isSidebarClosed = useSelector((state) => state.sidebar.isSidebarClosed);
+  let [ownerFullName, setOwnerFullName] = useState("");
+  const repoClickHandler = (fullName) => {
+    setOwnerFullName(fullName);
+  };
   return (
     <main className={classes.home}>
       <Sidebar />
-      <RepoList />
-      <div className={classes.readme}>readme</div>
+      <RepoList onRepoClick={repoClickHandler} />
+      <Readme fullName={ownerFullName} />
     </main>
   );
 };

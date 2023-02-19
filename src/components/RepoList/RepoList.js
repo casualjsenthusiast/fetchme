@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { reposListActions } from "../../store/index";
 import classes from "./RepoList.module.css";
 import NotFound from "../UI/NotFound/NotFound";
 import List from "./List";
 
 const RepoList = (props) => {
-  let [repos, setRepos] = useState([]);
+  let repos = useSelector((state) => state.reposList.reposList);
   let [page, setPage] = useState(1);
   let [totalCount, setReposTotalCount] = useState(0);
+  const dispatch = useDispatch();
   let isSidebarClosed = useSelector((state) => state.sidebar.isSidebarClosed);
   let searchTerm = useSelector((state) => state.selectedTerm.selectedTerm);
   const PER_PAGE = 10;
@@ -31,22 +33,26 @@ const RepoList = (props) => {
 
         setReposTotalCount(data["total_count"]);
 
-        setRepos(
-          data.items.map((d) => {
-            return {
-              id: d.id,
-              name: d.name,
-              topics: d.topics,
-              url: d["html_url"],
-              forks: d.forks,
-              stars: d["stargazers_count"],
-            };
-          })
+        dispatch(
+          reposListActions.setReposList(
+            data.items.map((d) => {
+              return {
+                id: d.id,
+                name: d.name,
+                topics: d.topics,
+                url: d["html_url"],
+                forks: d.forks,
+                stars: d["stargazers_count"],
+                blobsUrl: d["blobs_url"],
+                fullName: d["full_name"],
+              };
+            })
+          )
         );
       }
     }
     fetchData();
-  }, [searchTerm, page]);
+  }, [searchTerm, page, dispatch]);
 
   return (
     <section
@@ -59,7 +65,11 @@ const RepoList = (props) => {
         <>
           <div>
             {repos.map((repo) => (
-              <List key={repo.id} repo={repo} />
+              <List
+                key={repo.id}
+                repo={repo}
+                onClick={props.onRepoClick}
+              />
             ))}
           </div>
           <div className={classes["action-buttons"]}>

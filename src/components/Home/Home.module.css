@@ -4,15 +4,3 @@
   display: flex;
   flex-wrap: wrap;
 }
-
-.readme {
-  flex: 1 1 300px;
-  min-width: 300px;
-  background: var(--white-color);
-}
-
-@media (max-width: 601px) {
-  .readme {
-    min-width: 100vw;
-  }
-}
