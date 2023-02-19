@@ -7,6 +7,7 @@ import List from "./List";
 const RepoList = (props) => {
   let [repos, setRepos] = useState([]);
   let [page, setPage] = useState(1);
+  let [totalCount, setReposTotalCount] = useState(0);
   let isSidebarClosed = useSelector((state) => state.sidebar.isSidebarClosed);
   let searchTerm = useSelector((state) => state.selectedTerm.selectedTerm);
   const PER_PAGE = 10;
@@ -27,6 +28,8 @@ const RepoList = (props) => {
         let data = await fetch(
           `https://api.github.com/search/repositories?q=${searchTerm}+in:name&page=${page}&per_page=${PER_PAGE}&sort=stars&order=desc`
         ).then((d) => d.json());
+
+        setReposTotalCount(data["total_count"]);
 
         setRepos(
           data.items.map((d) => {
@@ -60,10 +63,16 @@ const RepoList = (props) => {
             ))}
           </div>
           <div className={classes["action-buttons"]}>
-            <button disabled={page === 1} onClick={actionButtonClickHandler.bind(null, "previous")}>
+            <button
+              disabled={page === 1}
+              onClick={actionButtonClickHandler.bind(null, "previous")}
+            >
               Previous
             </button>
-            <button onClick={actionButtonClickHandler.bind(null, "next")}>
+            <button
+              disabled={page * PER_PAGE >= totalCount}
+              onClick={actionButtonClickHandler.bind(null, "next")}
+            >
               Next
             </button>
           </div>
