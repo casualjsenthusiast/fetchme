@@ -7,6 +7,29 @@
   filter: unset !important;
 }
 
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.action-buttons button {
+  background-color: transparent;
+  color: var(--sidebar-text-color);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--link-hover);
+  cursor: pointer;
+  margin: 1rem;
+}
+
+.action-buttons button:hover:not(:disabled) {
+  background-color: var(--link-hover-dark);
+}
+
+.action-buttons button:disabled {
+  cursor: not-allowed;
+}
+
 @media (max-width: 769px) {
   .list-items {
     flex: 1 1;
