@@ -6,11 +6,11 @@ const Sidebar = () => {
   const isSidebarClosed = useSelector((state) => state.sidebar.isSidebarClosed);
 
   return (
-    <aside
+    <nav
       className={`${classes.sidebar} ${isSidebarClosed ? classes.closed : ""}`}
     >
       <SidebarContent />
-    </aside>
+    </nav>
   );
 };
 

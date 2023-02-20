@@ -43,3 +43,8 @@ ul li,
   border-right: none;
   border-top: none;
 }
+
+.closed {
+  flex-direction: row;
+  margin-left: auto;
+}

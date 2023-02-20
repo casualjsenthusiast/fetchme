@@ -13,7 +13,6 @@ const Home = () => {
     <main className={classes.home}>
       <Sidebar />
       <RepoList onRepoClick={repoClickHandler} />
-      <Readme fullName={ownerFullName} />
     </main>
   );
 };

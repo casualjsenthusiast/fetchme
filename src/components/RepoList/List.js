@@ -15,12 +15,10 @@ const List = (props) => {
             </a>
           </li>
           <li title="Fork">
-            <span className="fa fa-code-fork"></span>
-            {props.repo.forks}
+            <span className="fa fa-code-fork">&nbsp; {props.repo.forks} </span>
           </li>
           <li title="Stars">
-            <span className="fa fa-star-o"></span>
-            {props.repo.stars}
+            <span className="fa fa-star-o">&nbsp; {props.repo.stars} </span>
           </li>
           <li
             onClick={readmeClickHandler.bind(null, props.repo.fullName)}
@@ -30,7 +28,13 @@ const List = (props) => {
           </li>
         </ul>
       </div>
-      <div className={classes.tags}></div>
+      <div className={classes.topics}>
+        <ul>
+          {props.repo.topics.map((topic, idx) => (
+            <li key={`tag-${idx}`}>{topic}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

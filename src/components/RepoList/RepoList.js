@@ -10,7 +10,6 @@ const RepoList = (props) => {
   let [page, setPage] = useState(1);
   let [totalCount, setReposTotalCount] = useState(0);
   const dispatch = useDispatch();
-  let isSidebarClosed = useSelector((state) => state.sidebar.isSidebarClosed);
   let searchTerm = useSelector((state) => state.selectedTerm.selectedTerm);
   const PER_PAGE = 10;
 
@@ -55,21 +54,13 @@ const RepoList = (props) => {
   }, [searchTerm, page, dispatch]);
 
   return (
-    <section
-      className={`${classes["list-items"]} ${
-        isSidebarClosed ? classes.unblur : ""
-      }`}
-    >
-      {searchTerm === "" && <NotFound data="No data found" />}
+    <section className={classes["list-items"]}>
+      {searchTerm === "" && <NotFound msg="No data found" />}
       {searchTerm !== "" && (
         <>
           <div>
             {repos.map((repo) => (
-              <List
-                key={repo.id}
-                repo={repo}
-                onClick={props.onRepoClick}
-              />
+              <List key={repo.id} repo={repo} onClick={props.onRepoClick} />
             ))}
           </div>
           <div className={classes["action-buttons"]}>

@@ -75,7 +75,7 @@ const SidebarContent = (props) => {
               className={`fa fa-list ${classes["list-icon"]}`}
             ></span>
           </div>
-          <ul>
+          <ul className={`${isSidebarClosed ? classes.closed : ""}`}>
             <li>
               <span className="fa fa-file-code-o"></span>
             </li>

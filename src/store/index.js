@@ -1,7 +1,7 @@
 import { createSlice, configureStore } from "@reduxjs/toolkit";
 
 const initialState = {
-  isSidebarClosed: false,
+  isSidebarClosed: true,
   selectedTerm: "",
   reposList: [],
 };

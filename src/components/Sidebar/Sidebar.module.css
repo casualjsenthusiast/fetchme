@@ -1,6 +1,6 @@
 .sidebar {
-  flex: 1 1 300px;
-  min-width: 300px;
+  width: 100%;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   transition: flex 0.2s ease-out;
@@ -13,12 +13,5 @@
 }
 
 .closed {
-  flex: 0 50px !important;
-  min-width: unset;
-}
-
-@media (max-width: 769px) {
-  .sidebar {
-    flex: 2 1;
-  }
+  flex-direction: row;
 }
