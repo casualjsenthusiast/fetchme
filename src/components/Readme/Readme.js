@@ -35,7 +35,7 @@ const Readme = (props) => {
     }
 
     fetchReadme();
-  }, [props.fullName, fileName]);
+  });
   return (
     <section className={classes.readme}>
       {hasReadme && <div dangerouslySetInnerHTML={{ __html: content }}></div>}
