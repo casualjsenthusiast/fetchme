@@ -1,6 +1,5 @@
 .readme {
-  flex: 1 1 300px;
-  min-width: 300px;
+  height: 100%;
   background: var(--white-color);
   overflow: overlay;
   padding: 0 2rem;
@@ -11,10 +10,4 @@ code {
   width: 100%;
   white-space: pre-wrap;
   word-break: break-all;
-}
-
-@media (max-width: 601px) {
-  .readme {
-    min-width: 100vw;
-  }
 }

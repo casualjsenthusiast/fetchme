@@ -1,8 +1,16 @@
 import classes from "./List.module.css";
+import { useDispatch } from "react-redux";
+import { pageActions } from "../../store/index";
 
 const List = (props) => {
+  const dispatch = useDispatch();
   const readmeClickHandler = (fullName, _) => {
-    props.onClick(fullName);
+    dispatch(
+      pageActions.setPage({
+        component: "readme",
+        queryParams: [{ fullName }],
+      })
+    );
   };
 
   return (

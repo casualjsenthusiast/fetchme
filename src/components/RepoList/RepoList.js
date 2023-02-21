@@ -60,7 +60,7 @@ const RepoList = (props) => {
         <>
           <div>
             {repos.map((repo) => (
-              <List key={repo.id} repo={repo} onClick={props.onRepoClick} />
+              <List key={repo.id} repo={repo} />
             ))}
           </div>
           <div className={classes["action-buttons"]}>

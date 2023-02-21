@@ -4,6 +4,7 @@ const initialState = {
   isSidebarClosed: true,
   selectedTerm: "",
   reposList: [],
+  page: { component: "repoList", queryParams: [] },
 };
 
 const sidebarSlice = createSlice({
@@ -36,16 +37,28 @@ const reposListSlice = createSlice({
   },
 });
 
+const pageSlice = createSlice({
+  name: "page",
+  initialState: initialState,
+  reducers: {
+    setPage(state, action) {
+      state.page = action.payload;
+    },
+  },
+});
+
 const store = configureStore({
   reducer: {
     sidebar: sidebarSlice.reducer,
     selectedTerm: selectedTermSlice.reducer,
     reposList: reposListSlice.reducer,
+    page: pageSlice.reducer,
   },
 });
 
 export const sidebarActions = sidebarSlice.actions;
 export const selectedTermActions = selectedTermSlice.actions;
 export const reposListActions = reposListSlice.actions;
+export const pageActions = pageSlice.actions;
 
 export default store;
