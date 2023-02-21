@@ -10,9 +10,14 @@ const Readme = (props) => {
 
   useEffect(() => {
     async function fetchReadme() {
-      const result = await fetch(
+      let result = await fetch(
         `https://api.github.com/repos/${props.fullName}/git/trees/main?recursive=1`
       );
+      if (result.status === 404) {
+        result = await fetch(
+          `https://api.github.com/repos/${props.fullName}/git/trees/master?recursive=1`
+        );
+      }
       const resultJson = await result.json();
       const tree = resultJson["tree"];
       if (tree?.length > 0) {
